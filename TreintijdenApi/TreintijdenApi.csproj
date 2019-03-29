@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.9.0</Version>
+    <Authors>Michiel Post</Authors>
+    <Company />
+    <Description>Library to communicatie with the NS API</Description>
+    <Copyright>Michiel Post</Copyright>
+    <PackageProjectUrl>https://github.com/michielpost/TreintijdenApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/michielpost/TreintijdenApi</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>treintijden ns nederlandse spoorwegen</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/michielpost/TreintijdenApi/master/logo.svg</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
