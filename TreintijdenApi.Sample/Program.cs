@@ -31,11 +31,14 @@ namespace TreintijdenApi.Sample
             Console.WriteLine($"Next arrival at Delft Station: {firstArrival.Name} from {firstArrival.Origin} at {firstArrival.ActualDateTime}");
 
             var departure = await api.GetDepartures("Dt", DateTimeOffset.UtcNow.AddDays(1));
-            var firstdeparture = departure.Departures.Departures.First();
-            Console.WriteLine($"Departure in 24h at Delft Station: {firstdeparture.Name} to {firstdeparture.RouteStations.Last().MediumName} {firstdeparture.DepartureStatus}");
+            var firstdeparture = departure.Departures.Departures.FirstOrDefault();
+            Console.WriteLine($"Departure in 24h at Delft Station: {firstdeparture?.Name} to {firstdeparture?.RouteStations.Last()?.MediumName} {firstdeparture?.DepartureStatus}");
 
-            var trips = await api.GetTrips("Dt", "Ut", null, false, DateTimeOffset.UtcNow, false);
+            var trips = await api.GetTrips("Dt", "Ut", null,DateTimeOffset.UtcNow, false, false, true);
             Console.WriteLine($"Next trip from Dt to Ut duration: {trips.Trips.First().ActualDurationInMinutes}");
+
+            var price = await api.GetPrice(DateTimeOffset.UtcNow, "Dt", "Ut");
+            Console.WriteLine($"Price from Dt to Ut: {price.PriceOptions.First().TotalPrices.First().Price}");
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();

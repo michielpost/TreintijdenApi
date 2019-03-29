@@ -120,13 +120,17 @@ namespace TreintijdenApi
             [Query("fromStation")]string fromStation,
             [Query("toStation")]string toStation,
             [Query("viaStation")]string viaStation,
-            [Query("yearCard")]bool? yearCard,
             [Query("dateTime")] DateTimeOffset dateTime,
-            [Query("departure")]bool isDepartureTime
+            [Query("departure")]bool isDepartureTime = false,
+            [Query("yearCard")]bool? yearCard = false,
+            [Query("excludeHighSpeedTrains")]bool excludeHighSpeedTrains = true
             );
 
         //Needs a custom serializer
         // Task<GetTripsResponse> GetTrips([Query(QuerySerializationMethod.ToString)]GetTripsRequest request);
+
+        [Get("/public-prijsinformatie/prices")]
+        Task<GetPriceResponse> GetPrice([Query("date", Format = "yyyy-MM-dd")]DateTimeOffset date, [Query("fromStation")]string fromStation, [Query("toStation")]string toStation);
 
     }
 }
