@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/michielpost/TreintijdenApi</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>treintijden ns nederlandse spoorwegen</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/michielpost/TreintijdenApi/master/logo.svg</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/michielpost/TreintijdenApi/master/logo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
