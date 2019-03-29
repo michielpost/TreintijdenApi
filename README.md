@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/michielpost/TreintijdenApi/master/logo.jpg" height="150" width="150"> [![Build status](https://ci.appveyor.com/api/projects/status/k209wg02y7adyp1j/branch/master?svg=true)](https://ci.appveyor.com/project/michielpost/treintijdenapi/branch/master)
+<img src="https://raw.githubusercontent.com/michielpost/TreintijdenApi/master/logo.svg" height="150" width="150"> [![Build status](https://ci.appveyor.com/api/projects/status/k209wg02y7adyp1j/branch/master?svg=true)](https://ci.appveyor.com/project/michielpost/treintijdenapi/branch/master)
 # TreintijdenApi
 Treintijden API voor de NS API - Nederlandse Spoorwegen
 
