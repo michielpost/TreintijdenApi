@@ -21,6 +21,7 @@ namespace TreintijdenApi.Models.Response
         public int ActualTimeZoneOffset { get; set; }
         public DateTimeOffset ActualDateTime { get; set; }
         public string PlannedTrack { get; set; }
+        public string ActualTrack { get; set; }
         public string ExitSide { get; set; }
         public string CheckinStatus { get; set; }
         public List<Note> Notes { get; set; }
@@ -54,9 +55,11 @@ namespace TreintijdenApi.Models.Response
         public int PlannedDepartureTimeZoneOffset { get; set; }
         public DateTimeOffset ActualDepartureDateTime { get; set; }
         public string PlannedDepartureTrack { get; set; }
+        public string ActualDepartureTrack { get; set; }
         public DateTimeOffset PlannedArrivalDateTime { get; set; }
         public int PlannedArrivalTimeZoneOffset { get; set; }
         public string PlannedArrivalTrack { get; set; }
+        public string ActualArrivalTrack { get; set; }
         public bool Cancelled { get; set; }
         public string Name { get; set; }
         public double Lng { get; set; }
@@ -81,6 +84,20 @@ namespace TreintijdenApi.Models.Response
         public Link Link { get; set; }
     }
 
+    public class Message
+    {
+        public string Id { get; set; }
+        public string ExternalId { get; set; }
+        public string Head { get; set; }
+        public string Text { get; set; }
+        public string Lead { get; set; }
+        public string Type { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+    }
+
     public class Leg
     {
         public string Idx { get; set; }
@@ -95,10 +112,11 @@ namespace TreintijdenApi.Models.Response
         public Location Destination { get; set; }
         public Product Product { get; set; }
         public List<Note> Notes { get; set; }
-        //public List<object> Messages { get; set; }
+        public List<Message> Messages { get; set; }
         public List<Stop> Stops { get; set; }
        // public List<object> Steps { get; set; }
         public string CrowdForecast { get; set; }
+        public bool CrossPlatformTransfer { get; set; }
         public double Punctuality { get; set; }
         public bool ShorterStock { get; set; }
         public List<JourneyDetail> JourneyDetail { get; set; }
