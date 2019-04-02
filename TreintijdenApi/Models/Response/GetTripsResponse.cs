@@ -49,14 +49,14 @@ namespace TreintijdenApi.Models.Response
     public class Stop
     {
         public List<Note> Notes { get; set; }
-        public int RouteIdx { get; set; }
+        public int? RouteIdx { get; set; }
         public string DeparturePrognosisType { get; set; }
         public DateTimeOffset? PlannedDepartureDateTime { get; set; }
         public int PlannedDepartureTimeZoneOffset { get; set; }
-        public DateTimeOffset ActualDepartureDateTime { get; set; }
+        public DateTimeOffset? ActualDepartureDateTime { get; set; }
         public string PlannedDepartureTrack { get; set; }
         public string ActualDepartureTrack { get; set; }
-        public DateTimeOffset PlannedArrivalDateTime { get; set; }
+        public DateTimeOffset? PlannedArrivalDateTime { get; set; }
         public int PlannedArrivalTimeZoneOffset { get; set; }
         public string PlannedArrivalTrack { get; set; }
         public string ActualArrivalTrack { get; set; }
