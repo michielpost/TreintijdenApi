@@ -14,7 +14,7 @@ namespace TreintijdenApi.Models.Response
 
     public class DeparturePayload
     {
-        public List<Departure> Departures { get; set; }
+        public List<Departure> Departures { get; set; } = new List<Departure>()
     }
 
     public class Meta
@@ -31,12 +31,13 @@ namespace TreintijdenApi.Models.Response
         public DateTimeOffset ActualDateTime { get; set; }
         public int ActualTimeZoneOffset { get; set; }
         public string PlannedTrack { get; set; }
+        public string ActualTrack { get; set; }
         public Product Product { get; set; }
         public string TrainCategory { get; set; }
         public bool Cancelled { get; set; }
-        public List<RouteStation> RouteStations { get; set; }
+        public List<RouteStation> RouteStations { get; set; } = new List<RouteStation>();
         public string DepartureStatus { get; set; }
-        public List<DepartureMessage> Messages { get; set; }
+        public List<DepartureMessage> Messages { get; set; } = new List<DepartureMessage>();
     }
 
     public class RouteStation
