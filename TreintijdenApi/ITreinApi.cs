@@ -83,7 +83,7 @@ namespace TreintijdenApi
         /// <summary>
         /// List of disruptions/maintenance
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">storing or werkzaamheid</param>
         /// <param name="actual"></param>
         /// <param name="lang"></param>
         /// <returns></returns>

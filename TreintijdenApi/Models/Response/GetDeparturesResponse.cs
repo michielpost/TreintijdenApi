@@ -14,7 +14,7 @@ namespace TreintijdenApi.Models.Response
 
     public class DeparturePayload
     {
-        public List<Departure> Departures { get; set; } = new List<Departure>()
+        public List<Departure> Departures { get; set; } = new List<Departure>();
     }
 
     public class Meta
