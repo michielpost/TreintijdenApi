@@ -51,7 +51,7 @@ namespace TreintijdenApi.Models.Response
         public List<Note> Notes { get; set; }
         public int RouteIdx { get; set; }
         public string DeparturePrognosisType { get; set; }
-        public DateTimeOffset PlannedDepartureDateTime { get; set; }
+        public DateTimeOffset? PlannedDepartureDateTime { get; set; }
         public int PlannedDepartureTimeZoneOffset { get; set; }
         public DateTimeOffset ActualDepartureDateTime { get; set; }
         public string PlannedDepartureTrack { get; set; }
