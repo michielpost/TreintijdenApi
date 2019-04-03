@@ -8,6 +8,11 @@ using TreintijdenApi.Models.Response;
 
 namespace TreintijdenApi
 {
+    internal class DateTimeFormat
+    {
+        public const string RFC3339DateFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK";
+    }
+
     public interface ITreinApi
     {
         [Header("Ocp-Apim-Subscription-Key")]
@@ -33,7 +38,7 @@ namespace TreintijdenApi
         [Get("/public-reisinformatie/api/v2/arrivals")]
         Task<GetArrivalsResponse> GetArrivals(
             [Query("station")]string station,
-            [Query("dateTime")]DateTimeOffset? dateTime = null,
+            [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
             [Query("maxJourneys")]int? maxJourneys = null,
             [Query("lang")]string lang = null,
             [Query("uicCode")]string uicCode = null,
@@ -53,7 +58,7 @@ namespace TreintijdenApi
         [Get("/public-reisinformatie/api/v2/departures")]
         Task<GetDeparturesResponse> GetDepartures(
          [Query("station")]string station,
-         [Query("dateTime")]DateTimeOffset? dateTime = null,
+         [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
          [Query("maxJourneys")]int? maxJourneys = null,
          [Query("lang")]string lang = null,
          [Query("uicCode")]string uicCode = null,
@@ -73,7 +78,7 @@ namespace TreintijdenApi
         [Get("/public-reisinformatie/api/v2/departures/big")]
         Task<GetDeparturesResponse> GetDeparturesBig(
             [Query("station")]string station,
-            [Query("dateTime")]DateTimeOffset? dateTime = null,
+            [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
             [Query("maxJourneys")]int? maxJourneys = null,
             [Query("lang")]string lang = null,
             [Query("uicCode")]string uicCode = null,
@@ -120,11 +125,13 @@ namespace TreintijdenApi
             [Query("fromStation")]string fromStation,
             [Query("toStation")]string toStation,
             [Query("viaStation")]string viaStation,
-            [Query("dateTime")] DateTimeOffset dateTime,
+            [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)] DateTimeOffset dateTime,
             [Query("departure")]bool isDepartureTime = false,
             [Query("yearCard")]bool? yearCard = false,
-            [Query("excludeHighSpeedTrains")]bool excludeHighSpeedTrains = true
-            );
+            [Query("excludeHighSpeedTrains")]bool excludeHighSpeedTrains = true,
+            [Query("previousAdvices")]int previousAdvices = 8,
+            [Query("nextAdvices")]int nextAdvices = 8
+         );
 
         //Needs a custom serializer
         // Task<GetTripsResponse> GetTrips([Query(QuerySerializationMethod.ToString)]GetTripsRequest request);

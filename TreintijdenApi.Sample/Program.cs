@@ -34,7 +34,7 @@ namespace TreintijdenApi.Sample
             var firstdeparture = departure.Departures.Departures.FirstOrDefault();
             Console.WriteLine($"Departure in 24h at Delft Station: {firstdeparture?.Name} to {firstdeparture?.RouteStations.Last()?.MediumName} {firstdeparture?.DepartureStatus}");
 
-            var trips = await api.GetTrips("Dt", "Ut", null,DateTimeOffset.UtcNow, false, false, true);
+            var trips = await api.GetTrips("Dt", "Ut", null,DateTimeOffset.UtcNow.AddDays(5), false, false, true);
             Console.WriteLine($"Next trip from Dt to Ut duration: {trips.Trips.First().ActualDurationInMinutes}");
 
             var price = await api.GetPrice(DateTimeOffset.UtcNow, "Dt", "Ut");
