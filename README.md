@@ -5,6 +5,9 @@ Treintijden API voor de NS API - Nederlandse Spoorwegen
 C# .Net Core client voor de nieuwe NS API 
 https://apiportal.ns.nl/
 
+Partial support for internal API:
+https://developer.ns.nl/
+
 ## How To install?
 Download the source from GitHub or get the compiled assembly from NuGet [TreintijdenApi on NuGet](https://nuget.org/packages/TreintijdenApi).
 

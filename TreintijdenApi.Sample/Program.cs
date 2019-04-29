@@ -12,6 +12,11 @@ namespace TreintijdenApi.Sample
             Console.WriteLine("Enter API Key:");
             var apiKey = Console.ReadLine();
 
+            //var mLabApi = TreintijdenMLabClient.GetClient(apiKey);
+            //var trainInfo = await mLabApi.GetTrainInfo("123");
+            //Console.WriteLine($"Found {trainInfo.Lengte} treinlengte");
+
+
             var api = TreintijdenClient.GetClient(apiKey);
 
             var stations = await api.GetAllStations();
