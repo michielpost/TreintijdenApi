@@ -8,7 +8,7 @@ namespace TreintijdenApi
 {
     public interface IMLabApi
     {
-        [Header("x-api-key")]
+        [Header("Ocp-Apim-Subscription-Key")]
         string ApiKey { get; set; }
 
 
