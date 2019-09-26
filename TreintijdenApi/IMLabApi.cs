@@ -26,5 +26,10 @@ namespace TreintijdenApi
             [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null
         );
 
+        [Get("/virtual-train-api/api/v1/prognose/{ritnummer}")]
+        Task<List<PrognoseResponseItem>> GetTrainInfoPrognose(
+      [Path("ritnummer")]string ritnummer
+  );
+
     }
 }

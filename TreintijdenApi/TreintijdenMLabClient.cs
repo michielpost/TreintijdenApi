@@ -7,7 +7,7 @@ namespace TreintijdenApi
 {
     public static class TreintijdenMLabClient
     {
-        private const string nsBaseUrl = "https://ns-api.nl";
+        private const string nsBaseUrl = "https://gateway.apiportal.ns.nl";
         public static IMLabApi GetClient(string apiKey, string baseUrl = nsBaseUrl)
         {
             var treinApi = new RestClient(baseUrl)
