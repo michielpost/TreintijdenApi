@@ -15,7 +15,7 @@ Download the source from GitHub or get the compiled assembly from NuGet [Treinti
 Check the sample app for sample usage of all API methods.
 
 ```cs
-var client = TreintijdenClient.GetClient("YOUR_API_KEY");
+var client = TreintijdenClient<ITreinAPi>.GetClient("YOUR_API_KEY"); //Available: ITreinApi, IPriceApi, IVirtualTrainApi
 
 var delftArrivals = await _client.GetArrivals("Dt");
 ```

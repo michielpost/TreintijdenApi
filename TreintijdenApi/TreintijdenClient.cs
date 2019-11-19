@@ -5,10 +5,10 @@ using System;
 
 namespace TreintijdenApi
 {
-    public static class TreintijdenClient
+    public static class TreintijdenClient<T> where T : IBaseNsApi
     {
         private const string nsBaseUrl = "https://gateway.apiportal.ns.nl";
-        public static ITreinApi GetClient(string apiKey, string baseUrl = nsBaseUrl)
+        public static T GetClient(string apiKey, string baseUrl = nsBaseUrl)
         {
             var treinApi = new RestClient(baseUrl)
             {
@@ -17,7 +17,7 @@ namespace TreintijdenApi
                     ContractResolver = new CamelCasePropertyNamesContractResolver(),
                     NullValueHandling = NullValueHandling.Ignore
                 }
-            }.For<ITreinApi>();
+            }.For<T>();
 
             treinApi.ApiKey = apiKey;
 

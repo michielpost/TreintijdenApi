@@ -17,7 +17,7 @@ namespace TreintijdenApi.Sample
             //Console.WriteLine($"Found {trainInfo.Lengte} treinlengte");
 
 
-            var api = TreintijdenClient.GetClient(apiKey);
+            var api = TreintijdenClient<ITreinApi>.GetClient(apiKey);
 
             var stations = await api.GetAllStations();
             Console.WriteLine($"Found {stations.Stations.Count} stations");
@@ -28,7 +28,7 @@ namespace TreintijdenApi.Sample
             var disruption = await api.GetDisruption(disruptions.Disruptions.First().Id);
             Console.WriteLine($"Disruption {disruptions.Disruptions.First().Id} is {disruption.Disruption.Titel}");
 
-            var utrechtDisruptions = await api.GetStationDisruption("Üt");
+            var utrechtDisruptions = await api.GetStationDisruption("Ut");
             Console.WriteLine($"Found {utrechtDisruptions.Disruptions.Count} disruptions at Station Utrecht");
 
             var arrivals = await api.GetArrivals("Dt");
@@ -42,8 +42,8 @@ namespace TreintijdenApi.Sample
             var trips = await api.GetTrips("Dt", "Ut", null,DateTimeOffset.UtcNow.AddDays(5), false, false, true);
             Console.WriteLine($"Next trip from Dt to Ut duration: {trips.Trips.First().ActualDurationInMinutes}");
 
-            var price = await api.GetPrice(DateTimeOffset.UtcNow, "Dt", "Ut");
-            Console.WriteLine($"Price from Dt to Ut: {price.PriceOptions.First().TotalPrices.First().Price}");
+            //var price = await api.GetPrice(DateTimeOffset.UtcNow, "Dt", "Ut");
+            //Console.WriteLine($"Price from Dt to Ut: {price.PriceOptions.First().TotalPrices.First().Price}");
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();

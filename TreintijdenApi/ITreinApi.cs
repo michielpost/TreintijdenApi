@@ -13,16 +13,13 @@ namespace TreintijdenApi
         public const string RFC3339DateFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK";
     }
 
-    public interface ITreinApi
+    public interface ITreinApi : IBaseNsApi
     {
-        [Header("Ocp-Apim-Subscription-Key")]
-        string ApiKey { get; set; }
-
         /// <summary>
         /// List of stations
         /// </summary>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/stations")]
+        [Get("/reisinformatie-api/api/v2/stations")]
         Task<GetAllStationsResponse> GetAllStations();
 
         /// <summary>
@@ -35,7 +32,7 @@ namespace TreintijdenApi
         /// <param name="uicCode"></param>
         /// <param name="source"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/arrivals")]
+        [Get("/reisinformatie-api/api/v2/arrivals")]
         Task<GetArrivalsResponse> GetArrivals(
             [Query("station")]string station,
             [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
@@ -55,7 +52,7 @@ namespace TreintijdenApi
         /// <param name="uicCode"></param>
         /// <param name="source"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/departures")]
+        [Get("/reisinformatie-api/api/v2/departures")]
         Task<GetDeparturesResponse> GetDepartures(
          [Query("station")]string station,
          [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
@@ -75,7 +72,7 @@ namespace TreintijdenApi
         /// <param name="uicCode"></param>
         /// <param name="source"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/departures/big")]
+        [Get("/reisinformatie-api/api/v2/departures/big")]
         Task<GetDeparturesResponse> GetDeparturesBig(
             [Query("station")]string station,
             [Query("dateTime", Format = DateTimeFormat.RFC3339DateFormat)]DateTimeOffset? dateTime = null,
@@ -92,7 +89,7 @@ namespace TreintijdenApi
         /// <param name="actual"></param>
         /// <param name="lang"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/disruptions")]
+        [Get("/reisinformatie-api/api/v2/disruptions")]
         Task<GetDisruptionsResponse> GetDisruptions(
             [Query("type")]string type = null,
             [Query("actual")]bool? actual = null,
@@ -104,7 +101,7 @@ namespace TreintijdenApi
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/disruptions/{id}")]
+        [Get("/reisinformatie-api/api/v2/disruptions/{id}")]
         Task<GetDisruptionResponse> GetDisruption([Path("id")]string id);
 
         /// <summary>
@@ -112,7 +109,7 @@ namespace TreintijdenApi
         /// </summary>
         /// <param name="code">The UICCode or the station code</param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v2/disruptions/station/{code}")]
+        [Get("/reisinformatie-api/api/v2/disruptions/station/{code}")]
         Task<GetDisruptionsResponse> GetStationDisruption([Path("code")]string code);
 
         /// <summary>
@@ -120,7 +117,7 @@ namespace TreintijdenApi
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Get("/public-reisinformatie/api/v3/trips")]
+        [Get("/reisinformatie-api/api/v3/trips")]
         Task<GetTripsResponse> GetTrips(
             [Query("fromStation")]string fromStation,
             [Query("toStation")]string toStation,
@@ -135,9 +132,6 @@ namespace TreintijdenApi
 
         //Needs a custom serializer
         // Task<GetTripsResponse> GetTrips([Query(QuerySerializationMethod.ToString)]GetTripsRequest request);
-
-        [Get("/public-prijsinformatie/prices")]
-        Task<GetPriceResponse> GetPrice([Query("date", Format = "yyyy-MM-dd")]DateTimeOffset date, [Query("fromStation")]string fromStation, [Query("toStation")]string toStation);
 
     }
 }

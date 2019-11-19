@@ -6,12 +6,8 @@ using TreintijdenApi.Models.MLabResponse;
 
 namespace TreintijdenApi
 {
-    public interface IMLabApi
+    public interface IVirtualTrainApi : IBaseNsApi
     {
-        [Header("Ocp-Apim-Subscription-Key")]
-        string ApiKey { get; set; }
-
-
         [Get("/virtual-train-api/api/v1/trein/{ritnummer}/{stationscode}")]
         Task<TreinInfoResponse> GetTrainInfo(
             [Path("ritnummer")]string ritnummer,
