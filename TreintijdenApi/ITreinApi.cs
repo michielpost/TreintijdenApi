@@ -89,8 +89,8 @@ namespace TreintijdenApi
         /// <param name="actual"></param>
         /// <param name="lang"></param>
         /// <returns></returns>
-        [Get("/reisinformatie-api/api/v2/disruptions")]
-        Task<GetDisruptionsResponse> GetDisruptions(
+        [Get("/reisinformatie-api/api/v3/disruptions")]
+        Task<List<Disruption>> GetDisruptions(
             [Query("type")]string type = null,
             [Query("actual")]bool? actual = null,
             [Query("lang")]string lang = null
@@ -101,16 +101,16 @@ namespace TreintijdenApi
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Get("/reisinformatie-api/api/v2/disruptions/{id}")]
-        Task<GetDisruptionResponse> GetDisruption([Path("id")]string id);
+        [Get("/reisinformatie-api/api/v3/disruptions/{type}/{id}")]
+        Task<Disruption> GetDisruption([Path("type")] string type, [Path("id")]string id);
 
         /// <summary>
         /// Disruptions for a station, code is either a UIC code or old-skool station code
         /// </summary>
         /// <param name="code">The UICCode or the station code</param>
         /// <returns></returns>
-        [Get("/reisinformatie-api/api/v2/disruptions/station/{code}")]
-        Task<GetDisruptionsResponse> GetStationDisruption([Path("code")]string code);
+        [Get("/reisinformatie-api/api/v3/disruptions/station/{code}")]
+        Task<List<Disruption>> GetStationDisruption([Path("code")]string code);
 
         /// <summary>
         /// Searches for a travel advice with the specified options between the possible backends (HARP, 9292 or PAS/AVG).

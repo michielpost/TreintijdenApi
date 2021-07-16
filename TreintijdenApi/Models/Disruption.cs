@@ -8,67 +8,124 @@ namespace TreintijdenApi.Models
     {
         public string Id { get; set; }
         public string Type { get; set; }
-        public string Titel { get; set; }
+        public DateTime RegistrationTime { get; set; }
+        public DateTime ReleaseTime { get; set; }
+        public bool Local { get; set; }
+        public string Title { get; set; }
         public string Topic { get; set; }
-        public Verstoring Verstoring { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public Phase Phase { get; set; }
+        public Impact Impact { get; set; }
+        public ExpectedDuration ExpectedDuration { get; set; }
+        public SummaryAdditionalTravelTime SummaryAdditionalTravelTime { get; set; }
+        public List<PublicationSection> PublicationSections { get; set; }
+        public List<Timespan> Timespans { get; set; }
+        public List<AlternativeTransportTimespan> AlternativeTransportTimespans { get; set; }
+        public string Period { get; set; }
     }
 
-    public class Reisadvies
-    {
-        public string Titel { get; set; }
-        public List<string> Advies { get; set; }
-    }
-
-    public class Reisadviezen
-    {
-        public string Titel { get; set; }
-        public List<Reisadvies> Reisadvies { get; set; }
-    }
-
-    public class Baanvakken
-    {
-        public List<string> Stations { get; set; }
-    }
-
-    public class Trajecten
-    {
-        public List<string> Stations { get; set; }
-        public DateTimeOffset Begintijd { get; set; }
-        public DateTimeOffset Eindtijd { get; set; }
-        public string Richting { get; set; }
-    }
-
-    public class GeldigheidsLijst
-    {
-        public DateTimeOffset StartDatum { get; set; }
-        public DateTimeOffset EindDatum { get; set; }
-        public string StartTijd { get; set; }
-        public string EindTijd { get; set; }
-    }
-
-    public class Verstoring
+    public class Phase
     {
         public string Id { get; set; }
-        public Reisadviezen Reisadviezen { get; set; }
-        public string Verwachting { get; set; }
-        public string Gevolg { get; set; }
-        public string GevolgType { get; set; }
-        public string Fase { get; set; }
-        public string AlternatiefVervoer { get; set; }
-        public bool Landelijk { get; set; }
-        public string Oorzaak { get; set; }
-        public string Header { get; set; }
-        public DateTime Meldtijd { get; set; }
-        public string Type { get; set; }
-        public List<Baanvakken> Baanvakken { get; set; }
-        public List<Trajecten> Trajecten { get; set; }
-        public string Versie { get; set; }
-        public string Volgnummer { get; set; }
-        public int Prioriteit { get; set; }
-        public string ExtraReistijd { get; set; }
-        public List<GeldigheidsLijst> GeldigheidsLijst { get; set; }
-        public int? Impact { get; set; }
-        public int? Maatschappij { get; set; }
-        public string Periode { get; set; }
+        public string Label { get; set; }
+    }
+
+    public class Impact
+    {
+        public int Value { get; set; }
+    }
+
+    public class ExpectedDuration
+    {
+        public string Description { get; set; }
+        public DateTime EndTime { get; set; }
+    }
+
+    public class SummaryAdditionalTravelTime
+    {
+        public string Label { get; set; }
+        public string ShortLabel { get; set; }
+        public int MinimumDurationInMinutes { get; set; }
+        public int? MaximumDurationInMinutes { get; set; }
+    }
+
+    public class Coordinate
+    {
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+    }
+
+    public class Station
+    {
+        public string UicCode { get; set; }
+        public string StationCode { get; set; }
+        public string Name { get; set; }
+        public Coordinate Coordinate { get; set; }
+        public string CountryCode { get; set; }
+    }
+
+    public class Section
+    {
+        public List<Station> Stations { get; set; }
+        public string Direction { get; set; }
+    }
+
+    public class Consequence
+    {
+        public Section Section { get; set; }
+        public string Description { get; set; }
+        public string Level { get; set; }
+    }
+
+    public class PublicationSection
+    {
+        public Section Section { get; set; }
+        public Consequence Consequence { get; set; }
+        public string SectionType { get; set; }
+    }
+
+    public class Situation
+    {
+        public string Label { get; set; }
+    }
+
+    public class Cause
+    {
+        public string Label { get; set; }
+    }
+
+    public class AdditionalTravelTime
+    {
+        public string Label { get; set; }
+        public string ShortLabel { get; set; }
+        public int MinimumDurationInMinutes { get; set; }
+        public int? MaximumDurationInMinutes { get; set; }
+    }
+
+    public class AlternativeTransport
+    {
+        public string Label { get; set; }
+        public string ShortLabel { get; set; }
+    }
+
+    public class Timespan
+    {
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public Situation Situation { get; set; }
+        public Cause Cause { get; set; }
+        public AdditionalTravelTime AdditionalTravelTime { get; set; }
+        public AlternativeTransport AlternativeTransport { get; set; }
+        public List<string> Advices { get; set; }
+        public string Period { get; set; }
+    }
+
+    public class AlternativeTransportTimespan
+    {
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public AlternativeTransport AlternativeTransport { get; set; }
     }
 }

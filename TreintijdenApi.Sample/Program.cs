@@ -23,13 +23,14 @@ namespace TreintijdenApi.Sample
             Console.WriteLine($"Found {stations.Stations.Count} stations");
 
             var disruptions = await api.GetDisruptions();
-            Console.WriteLine($"Found {disruptions.Disruptions.Count} disruptions");
+            Console.WriteLine($"Found {disruptions.Count} disruptions");
 
-            var disruption = await api.GetDisruption(disruptions.Disruptions.First().Id);
-            Console.WriteLine($"Disruption {disruptions.Disruptions.First().Id} is {disruption.Disruption.Titel}");
+            var firstDisruption = disruptions.First();
+            var disruption = await api.GetDisruption(firstDisruption.Type, firstDisruption.Id);
+            Console.WriteLine($"Disruption {disruptions.First().Id} is {disruption.Title}");
 
             var utrechtDisruptions = await api.GetStationDisruption("Ut");
-            Console.WriteLine($"Found {utrechtDisruptions.Disruptions.Count} disruptions at Station Utrecht");
+            Console.WriteLine($"Found {utrechtDisruptions.Count} disruptions at Station Utrecht");
 
             var arrivals = await api.GetArrivals("Dt");
             var firstArrival = arrivals.Arrivals.Arrivals.First();
